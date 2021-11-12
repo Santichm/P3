@@ -49,7 +49,7 @@ public class AccountTest extends TestCase{
         int result = Account.withdraw(c);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -63,7 +63,7 @@ public class AccountTest extends TestCase{
         int result = Account.deposit(c);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
     /**
@@ -73,7 +73,7 @@ public class AccountTest extends TestCase{
     public void testTDD14() {
         System.out.println("TDD14");
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }
