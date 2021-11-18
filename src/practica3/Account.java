@@ -11,17 +11,34 @@ package practica3;
  */
 public class Account {
     
-    int balance;
+    static int balance;
     
     public Account(int balance) {
-        this.balance = balance;
+        
+        if(balance > 0) {
+            this.balance = balance;
+        } else {
+            this.balance = 0;
+        }
     }
     
-    public static int withdraw(int c) {
-        return 0;
+    public static int getBalance() {
+        return balance;
+    }
+    
+    public static int withdraw(int c) throws Exception {
+        
+        if( balance - c < -500) {
+            throw new Exception("Not enough balance");
+        } else {
+            balance -= c;
+        }
+        
+        return balance;
     }
     
     public static int deposit(int c) {
-        return 0;
+        balance += c;
+        return balance;
     }
 }

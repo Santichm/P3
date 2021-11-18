@@ -19,6 +19,8 @@ import static org.junit.Assert.*;
  */
 public class AccountTest extends TestCase{
     
+    static Account _12345, _67890;
+    
     public AccountTest() {
     }
     
@@ -42,14 +44,13 @@ public class AccountTest extends TestCase{
      * Test of withdraw method, of class Account.
      */
     @Test
-    public void testWithdraw() {
+    public void testWithdraw() throws Exception {
+        _12345 = new Account(50);
         System.out.println("withdraw");
-        int c = 0;
-        int expResult = 0;
-        int result = Account.withdraw(c);
+        int c = 100;
+        int expResult = -50;
+        int result = _12345.withdraw(c);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
 
     /**
@@ -57,13 +58,12 @@ public class AccountTest extends TestCase{
      */
     @Test
     public void testDeposit() {
+        _67890 = new Account(0);
         System.out.println("deposit");
-        int c = 0;
-        int expResult = 0;
-        int result = Account.deposit(c);
+        int c = 100;
+        int expResult = 100;
+        int result = _67890.deposit(c);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
     
     /**
