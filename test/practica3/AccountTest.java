@@ -5,6 +5,8 @@
  */
 package practica3;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,7 +21,7 @@ import static org.junit.Assert.*;
  */
 public class AccountTest extends TestCase{
     
-    static Account _12345, _67890;
+    Account _12345, _67890;
     
     public AccountTest() {
     }
@@ -72,8 +74,55 @@ public class AccountTest extends TestCase{
     @Test
     public void testTDD14() {
         System.out.println("TDD14");
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        _12345 = new Account(50);
+        _67890 = new Account(0);
+        boolean expResult = true;
+        
+        try {
+            _12345.withdraw(200);
+        } catch (Exception ex) {
+            System.out.println("Error: Insufficient funds in Account in Account#12345 (balance $" + _12345.getBalance() + ") for $" + 200 + " Withdraw");
+        }
+        
+        try {
+            _67890.withdraw(350);
+        } catch (Exception ex) {
+            System.out.println("Error: Insufficient funds in Account in Account#67890 (balance $" + _67890.getBalance() + ") for $" + 350 + " Withdraw");
+        }
+        
+        _12345.deposit(100);
+        
+        try {
+            _67890.withdraw(200);
+        } catch (Exception ex) {
+            System.out.println("Error: Insufficient funds in Account in Account#67890 (balance $" + _67890.getBalance() + ") for $" + 200 + " Withdraw");
+        }
+        
+        try {
+            _67890.withdraw(150);
+        } catch (Exception ex) {
+            System.out.println("Error: Insufficient funds in Account in Account#67890 (balance $" + _67890.getBalance() + ") for $" + 150 + " Withdraw");
+        }
+        
+        try {
+            _12345.withdraw(200);
+        } catch (Exception ex) {
+            System.out.println("Error: Insufficient funds in Account in Account#12345 (balance $" + _12345.getBalance() + ") for $" + 200 + " Withdraw");
+        }
+        
+        _67890.deposit(50);
+        
+        try {
+            _67890.withdraw(100);
+        } catch (Exception ex) {
+            System.out.println("Error: Insufficient funds in Account in Account#67890 (balance $" + _67890.getBalance() + ") for $" + 100 + " Withdraw");
+        }
+        
+        System.out.println("#12345: " + _12345.getBalance());
+        System.out.println("#67890: " + _67890.getBalance());
+        boolean result = _12345.getBalance() == -250 && _67890.getBalance() == -450;
+        assertEquals(expResult, result);
+        
     }
     
 }
